@@ -1,3 +1,6 @@
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
+
 const images = [
   {
     preview:
@@ -70,11 +73,11 @@ const refs = {
 
 const createPictureItem = picture => {
   return `<li class="gallery-item">
-	<a class="gallery-link" href=${picture.original}>
+	<a class="gallery-link" href="${picture.original}">
 		<img 
 		  class="gallery-image" 
-		  src=${picture.preview}
-		  alt=${picture.description}
+		  src="${picture.preview}"
+		  alt="${picture.description}"
 		/>
 	</a>
 </li>`;
@@ -85,3 +88,8 @@ const addPictureToGallery = images
   .join('');
 
 refs.galleryList.innerHTML = addPictureToGallery;
+
+const gallery = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionDelay: 250,
+});
